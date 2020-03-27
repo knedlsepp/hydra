@@ -133,7 +133,7 @@
       </tr>
       <tr>
         <th>Description:</th>
-        <td>[% HTML.escape(jobset.description) %]</td>
+        <td>[% WRAPPER maybeLink uri=jobset.homepage %][% HTML.escape(jobset.description) %][% END %]</td>
       </tr>
       <tr>
         <th>Nix expression:</th>

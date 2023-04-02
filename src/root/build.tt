@@ -277,11 +277,6 @@ END;
 
       [% IF otherEval %]
         <h3>SEMPFES</h3>
-        SEMPF eval [% USE Dumper; Dumper.dump(eval) %]<br>
-        SEMPF otherEval [% USE Dumper; Dumper.dump(otherEval) %]<br>
-
-        SEMPF eval.jobsetevalinputs [% USE Dumper; Dumper.dump(eval.jobsetevalinputs) %]<br>
-        SEMPF otherEval.jobsetevalinputs [% USE Dumper; Dumper.dump(otherEval.jobsetevalinputs) %]<br>
         [% INCLUDE renderInputDiff inputs2=eval.jobsetevalinputs inputs1=otherEval.jobsetevalinputs %]
       [% END %]
 
@@ -309,10 +304,7 @@ END;
             WELL WELL WELL<br>
             SEMPF prevSuccessfulBuild [% USE Dumper; Dumper.dump(prevSuccessfulBuild) %]<br>
             SEMPF firstBrokenBuild [% USE Dumper; Dumper.dump(firstBrokenBuild) %]<br>
-
-            SEMPF prevSuccessfulBuild.jobsetevalinputs [% USE Dumper; Dumper.dump(prevSuccessfulBuild.jobsetevalinputs) %]<br>
-            SEMPF firstBrokenBuild.jobsetevalinputs [% USE Dumper; Dumper.dump(firstBrokenBuild.jobsetevalinputs) %]<br>
-            <td>[% INCLUDE renderInputDiff inputs1=prevSuccessfulBuild.jobsetevalinputs inputs2=firstBrokenBuild.jobsetevalinputs %]</td>
+            <td>[% INCLUDE renderInputDiff inputs1=prevSuccessfulBuild.inputs inputs2=firstBrokenBuild.inputs %]</td>
           </tr>
         </table>
       [% END %]
@@ -450,17 +442,14 @@ END;
 
     [% IF build.inputs && build.inputs.size > 0 %]
 
-      SEMPF IF build.inputs && build.inputs.size > 0
       [% INCLUDE renderInputs inputs=build.inputs %]
 
 
     [% ELSIF eval %]
-      SEMPF elseif eval
 
       [% INCLUDE renderInputs inputs=eval.jobsetevalinputs %]
 
     [% END %]
-      SEMPF other
 
   </div>
 

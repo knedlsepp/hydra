@@ -276,8 +276,8 @@ END;
       [% END %]
 
       [% IF otherEval %]
-        <h3>SEMPFES</h3>
-        [% INCLUDE renderInputDiff inputs2=eval.jobsetevalinputs inputs1=otherEval.jobsetevalinputs %]
+        <h3>Changes since last successful eval</h3>
+        [% INCLUDE renderInputDiff inputs2=eval.jobsetevalinputs inputs1=prevSuccessfulEval.jobsetevalinputs %]
       [% END %]
 
       [% IF prevSuccessfulBuild %]

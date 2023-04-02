@@ -165,6 +165,7 @@
               pixz
               boost
               postgresql_13
+              pgweb
               (if lib.versionAtLeast lib.version "20.03pre"
               then nlohmann_json
               else nlohmann_json.override { multipleHeaders = true; })
@@ -178,6 +179,7 @@
             libressl.nc
             openldap
             python3
+            pgweb
           ];
 
           hydraPath = lib.makeBinPath (

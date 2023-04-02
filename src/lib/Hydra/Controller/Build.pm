@@ -32,6 +32,9 @@ sub buildChain :Chained('/') :PathPart('build') :CaptureArgs(1) {
 
     $c->stash->{prevSuccessfulBuild} = getPreviousSuccessfulBuild($c, $c->stash->{build});
     $c->stash->{firstBrokenBuild} = getNextBuild($c, $c->stash->{prevSuccessfulBuild});
+    $c->stash->{firstBrokenEval} = getFirstEval($c->stash->{firstBrokenBuild});
+    $c->stash->{prevSuccessfulEval} = getFirstEval($c->stash->{prevSuccessfulBuild});
+
 
     $c->stash->{mappers} = [$c->model('DB::UriRevMapper')->all];
 

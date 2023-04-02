@@ -301,10 +301,7 @@ END;
           </tr>
           <tr>
             <td></td>
-            WELL WELL WELL<br>
-            SEMPF prevSuccessfulBuild [% USE Dumper; Dumper.dump(prevSuccessfulBuild) %]<br>
-            SEMPF firstBrokenBuild [% USE Dumper; Dumper.dump(firstBrokenBuild) %]<br>
-            <td>[% INCLUDE renderInputDiff inputs1=prevSuccessfulBuild.inputs inputs2=firstBrokenBuild.inputs %]</td>
+            <td>[% INCLUDE renderInputDiff inputs1=prevSuccessfulEval.jobsetevalinputs inputs2=firstBrokenEval.jobsetevalinputs %]</td>
           </tr>
         </table>
       [% END %]

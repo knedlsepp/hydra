@@ -163,8 +163,9 @@ clone(){
     )
 
     # Checkout linked sources.
-    init_submodules;
-
+    if "$deepClone"; then
+        init_submodules;
+    fi
     if [ -z "$builder" -a -f .topdeps ]; then
 	if tg help 2>&1 > /dev/null
 	then
